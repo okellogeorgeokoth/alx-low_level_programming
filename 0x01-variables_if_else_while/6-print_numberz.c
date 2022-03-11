@@ -11,7 +11,7 @@ int main(void)
 
 	while (a < 38)
 	{
-		putchar(d);
+		putchar(a);
 		a++;
 	}
 	putchar('\n');
