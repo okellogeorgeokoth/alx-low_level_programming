@@ -1,52 +1,52 @@
 #include "main.h"
-
 /**
- * print_times_table - Print the `n` times table, starting with 0.
- * Description: If `n` is greater than 15 or less than 0, print nothing.
- * @n: int type number
+ * print_times_table - print times table up to input
+ *
+ * Description: Writes times table up to imput not exceeding 15
+ *
+ * @n: size of times table
+ *
+ * Return: Nothing
  */
 
 void print_times_table(int n)
 {
-	int x = 0, y, z;
+	int y, x, prod;
 
-	if (n > 15 || n < 0)
-	{	
-		return;
-	while (x <= n)
+	if (n <= 15 && n >= 0)
 	{
 		for (y = 0; y <= n; y++)
 		{
-			z = x * y;
-			if (z > 99)
+			for (x = 0; x <= n; x++)
 			{
-				_putchar(z / 100 + '0');
-				_putchar((z / 10 % 10) + '0');
-				_putchar(z % 10 + '0');
+				prod = (y * x);
+				if (x != 0)
+				{
+					_putchar(',');
+					_putchar(' ');
+				}
+				if (prod < 10 && x != 0)
+				{
+					_putchar(' ');
+					_putchar(' ');
+					_putchar((prod % 10) + '0');
+				}
+				else if (prod >= 10 && prod < 100)
+				{
+					_putchar(' ');
+					_putchar((prod / 10) + '0');
+					_putchar((prod % 10) + '0');
+				}
+				else if (prod >= 100 && x != 0)
+				{
+					_putchar((prod / 100) + '0');
+					_putchar((prod / 10) % 10 + '0');
+					_putchar((prod % 10) + '0');
+				}
+				else
+					_putchar((prod % 10) + '0');
 			}
-			else if (z > 9)
-			{
-				_putchar(' ');
-				_putchar(z / 10 + '0');
-				_putchar(z % 10 + '0');
-			}
-			else if (y != 0)
-			{
-				_putchar(' ');
-				_putchar(' ');
-				_putchar(z + '0');
-			}
-			else
-				_putchar(z + '0');
-
-			if (y != n)
-			{
-				_putchar(',');
-				_putchar(' ');
-			}
-		}
-		_putchar('\n');
-		x++;
+			_putchar('\n');
 		}
 	}
 }
